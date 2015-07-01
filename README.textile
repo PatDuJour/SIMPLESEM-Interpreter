@@ -1,5 +1,6 @@
 h1. SIMPLESEM Interpreter
-Author: "Rob Olson":http://patrickzhang.me
+
+Author: "Patrick Zhang":http://patrickzhang.me
 
 h2. Description
 A Small Project for UCI Upper Devision Computer Science Class, Programming Language, with Dr. Alfaro.
