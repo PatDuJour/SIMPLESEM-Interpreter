@@ -6,7 +6,7 @@ h2. Description
 
 A Small Project for UCI Upper Devision Computer Science Class, Programming Language, with Dr. Alfaro.
 
-h3.Log
+h3. Log
 
 Entry #1 Added Wednesday July 1st, 2015
 
