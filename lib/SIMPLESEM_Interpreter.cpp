@@ -1,6 +1,6 @@
 //
 //  SIMPLESEM_Interpreter.cpp
-//  HW1
+//  
 //
 //  Created by Patrick Zhang on 6/30/15.
 //  Copyright (c) 2015 Patrick Zhang. All rights reserved.
