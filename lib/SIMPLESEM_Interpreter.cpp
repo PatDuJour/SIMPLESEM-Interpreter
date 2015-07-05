@@ -1,12 +1,13 @@
 //
-//  SIMPLESEM_Interpreter.cpp
-//  
+//  main.cpp
+//  HW1
 //
 //  Created by Patrick Zhang on 6/30/15.
 //  Copyright (c) 2015 Patrick Zhang. All rights reserved.
 //
 
 #include "SIMPLESEM.hpp"
+
 
 template <typename T>
 void read_values(const std::string& file_name, std::vector<T>& lines){
@@ -49,24 +50,45 @@ void factor(std::string token, std::string line){
     }
 }
 void term(std::string token, std::string line){
+    std::string left;
+    std::string right;
+    std::string delimiter;
     std::cout<< "Term" <<std::endl;
-    factor(token, line);
+    if (token.find("%")!=std::string::npos) {    /* find % */
+        delimiter = "%";
+        left = token.substr(0, token.find(delimiter));
+        right = token.substr(token.find(delimiter)+1, std::string::npos);
+        factor(left, line);
+        factor(right, line);
+    }
+    else if (token.find("*")!=std::string::npos) {    /* find * */
+        delimiter = "*";
+        left = token.substr(0, token.find(delimiter));
+        right = token.substr(token.find(delimiter)+1, std::string::npos);
+        factor(left, line);
+        factor(right, line);
+    }
+    else{
+        factor(token, line);
+    }
+    
 }
+
 void expr(std::string token, std::string line){
     std::string left;
     std::string right;
     std::string delimiter;
-    if (token.find("read")==std::string::npos && token.find("write")==std::string::npos) {
+    if (token.find("read")==std::string::npos && token.find("write")==std::string::npos) {   /* does not find read | write */
         std::cout << "Expr" <<std::endl;
-        if (token[0] == 'D' && token.find("-")!=std::string::npos) {
+        
+        if (token.find("-")!=std::string::npos) {
             delimiter = "-";
             left = token.substr(0, token.find(delimiter));
             right = token.substr(token.find(delimiter)+1, std::string::npos);
             term(left, line);
             term(right, line);
         }
-        
-        else if (token[0] == 'D' && token.find("+")!=std::string::npos) {
+        else if (token.find("+")!=std::string::npos) {
             delimiter = "+";
             left = token.substr(0, token.find(delimiter));
             right = token.substr(token.find(delimiter)+1, std::string::npos);
@@ -79,6 +101,7 @@ void expr(std::string token, std::string line){
         }
         
     }
+
 }
 void set(std::string token, std::string line){
     std::cout<< "Set"<<std::endl;
@@ -90,6 +113,7 @@ void set(std::string token, std::string line){
     expr(first, line);
     expr(second, line);
 }
+
 void jumpt(std::string token, std::string line){
     std::cout<< "Jumpt" <<std::endl;
     token = get_token(line);
@@ -126,22 +150,28 @@ void statement(std::string line){
         halt();
     }
     else{
-        std::cout<<"unexpected expression"<<std::endl;
+        std::cout<<"Unexpected Expression"<<std::endl;
     }
 }
 
 
 int main(int argc, const char * argv[]) {
-
-    std::vector<std::string> lines;
-    read_values(argv[1], lines);
     
-    std::cout<<"Program"<<std::endl;
-    for (auto i: lines){
-        std::cout<<"Statement"<<std::endl;
-        statement(i);
-        std::cout<<std::endl;
+    if (argc!=2) {
+        std::cout << "Unexpected Run Argument"<<std::endl;
     }
+    
+    else{
+        std::vector<std::string> lines;
+        read_values(argv[1], lines);
+        std::cout<<"Program"<<std::endl;
+        for (auto i: lines){
+            std::cout<<"Statement"<<std::endl;
+            statement(i);
+        }
+    }
+    
+    
                
     return 0;
 }
