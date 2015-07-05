@@ -19,3 +19,6 @@ Entry #2 Added Sunday July  5th, 2015
 
 - Bug Fixes.
 - Added more complex test cases.
+  - Program 4.S tries to break your code by passing integers greater than length 1.
+  - Program 5.S tests against <Factor> -> <Number> | D[<Expr>] | (<Expr>)
+  - Program 6.S tests against <Term> -> <Factor> {(* | / | % ) <Factor>}
