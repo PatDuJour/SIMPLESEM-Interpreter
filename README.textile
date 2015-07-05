@@ -14,3 +14,8 @@ Entry #1 Added Wednesday July 1st, 2015
 
 This is an interpreter that translates programs written in SIMPLESEM into computational actions, effectively running the program being interpreted. Code Analysis is the first phase in Interpretation, which ensures the source program is syntactically & semantically correct.
 This assignment requires me to implement the syntactic analysis phase of Interpretation.
+
+Entry #2 Added Sunday July  5th, 2015
+
+ - Bug Fixes.
+ - Added More Test Cases.
