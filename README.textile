@@ -17,5 +17,5 @@ This assignment requires me to implement the syntactic analysis phase of Interpr
 
 Entry #2 Added Sunday July  5th, 2015
 
-Bug Fixes.
-Added More Test Cases.
+- Bug Fixes.
+- Added More Test Cases.
