@@ -1,0 +1,39 @@
+1X1: PROGRAMMING LANGUAGES
+Assignment 1
+
+OVERVIEW
+As mentioned in lecture, all of the languages we will study this quarter are interpreted.
+An interpreter translates programs written in one language into computational actions, effectively running the program being interpreted. Code Analysis is the first phase in Interpretation, which ensures the source program is syntactically & semantically correct.
+This assignment requires you to implement the syntactic analysis phase of Interpretation; you will implement the interpreter’s computational engine in a future assignment.
+SIMPLESEM INSTRUCTION FORMAT
+The interpreter is being written for a language named SIMPLESEM. The SIMPLESEM instruction set contains four op-codes: set, jump, jumpt, and halt. The instruction formats are as follows (a future assignment specification will explain each instruction’s semantics):
+           set destination, source
+           jump destination
+           jumpt destination, boolean-condition
+           halt
+To perform syntactic analysis of SIMPLESEM you will:
+• Open & Read a SIMPLESEM program
+• Use C++ or Java to identify & tokenize keywords, symbols, and expressions
+• Use the SIMPLESEM grammar below to parse a program according to language rules
+SIMPLESEM GRAMMAR
+The grammar for SIMPLESEM is as follows: <Program><Statement> {<Statement>} <Statement>  <Set> | <Jump> | <Jumpt> | halt
+<Set> set (write | <Expr>), (read |<Expr>) <Jump> jump <Expr>
+<Jumpt>jumpt<Expr>,<Expr> (!= | == | > | < | >= |<= ) <Expr> <Expr><Term> {(+ |- ) <Term>}
+<Term><Factor> {(* | / | % ) <Factor>}
+<Factor> <Number> | D[<Expr>] | (<Expr>)
+<Number>0| (1..9){0..9}
+Guide to EBNF: |— separate alternate choices, ()—choose 1, {}—choose 0 or more,
+keyword/symbol—what is in bold CourierNew font.
+SYNTACTIC ANALYSIS
+To ensure the file is syntactically correct according to the SIMPLESEM grammar, you will need to complete the following tasks :
+• Open input file for reading (NAME: provided as command-line argument; FORMAT: one SIMPLESEM statement per line)
+• As described in lecture & discussion, use recursion and looping to correctly parse SIMPLESEM grammar rules.
+Note: To syntactically analyze the file, you may use the Regular Expressions utility of either Java or C++, but this is not necessary.
+OUTPUT
+Print the name of each non-terminal entered. Please see the sample .out for example output. SUBMISSION
+Submit the following items to the Assignment #1 Dropbox on E3:
+• A single zip file labeled with your UCI net ID, an underscore and the language you chose to implement: C++ or Java. For example, Alfaro_C++.zip or Alfaro_Java.zip, which should contain ONLY files needed to implement this project.
+• All projects must be able to execute via command line receiving the filename as a command line argument:
+           Java: java SIMPLESEM Program#.S
+           C++:  SIMPLESEM.exe Program#.S
+￼￼
